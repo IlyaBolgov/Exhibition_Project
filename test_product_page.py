@@ -1,6 +1,7 @@
 import pytest
 from .pages.product_page import ProductPage
 
+
 xfile = 7
 mask = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer'
 links = [mask+str(i) for i in range(10) if i != xfile]
