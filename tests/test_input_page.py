@@ -1,5 +1,6 @@
 from pages.inputs_page import InputsPage
 
+
 def test_input_field(driver):
     inputs_page = InputsPage(driver)
     inputs_page.open()

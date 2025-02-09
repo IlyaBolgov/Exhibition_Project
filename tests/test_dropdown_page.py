@@ -1,5 +1,6 @@
 from pages.dropdown_page import DropdownPage
 
+
 def test_dropdown_selection(driver):
     dropdown_page = DropdownPage(driver)
     dropdown_page.open()
