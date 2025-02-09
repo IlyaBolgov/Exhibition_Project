@@ -3,6 +3,7 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+
 class CheckboxesPage:
     URL = "http://the-internet.herokuapp.com/checkboxes"
 
@@ -15,4 +16,6 @@ class CheckboxesPage:
 
     def get_checkboxes(self):
         logger.info("Retrieving all checkboxes")
-        return self.driver.find_elements(By.CSS_SELECTOR, "form#checkboxes input[type='checkbox']")
+        return self.driver.find_elements(
+            By.CSS_SELECTOR, "form#checkboxes input[type='checkbox']"
+        )
