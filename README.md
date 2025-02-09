@@ -10,3 +10,9 @@
 
 Кроме того, я решил добавить немного API тестов. Моя работа всегда была плотно связана с backend, поэтому
 я не мог обойтись без них.
+
+Добавил выгрузку Allure отчетов:
+
+pytest --alluredir=allure-results
+allure serve allure-results
+
