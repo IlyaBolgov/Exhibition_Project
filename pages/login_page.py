@@ -1,4 +1,4 @@
-from selenium.webdriver.common.by import By
+from playwright.sync_api import Page
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -7,21 +7,21 @@ logger = get_logger(__name__)
 class LoginPage:
     URL = "http://the-internet.herokuapp.com/login"
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self, page: Page):
+        self.page = page
 
     def open(self) -> None:
         logger.info("Opening Login Page: %s", self.URL)
-        self.driver.get(self.URL)
+        self.page.goto(self.URL)
 
     def login(self, username: str, password: str) -> None:
         logger.info("Logging in with username: %s", username)
-        self.driver.find_element(By.ID, "username").send_keys(username)
-        self.driver.find_element(By.ID, "password").send_keys(password)
-        self.driver.find_element(By.CSS_SELECTOR, "button.radius").click()
+        self.page.fill("#username", username)
+        self.page.fill("#password", password)
+        self.page.click("button.radius")
 
     def get_flash_message(self) -> str:
-        flash_elem = self.driver.find_element(By.ID, "flash")
-        message = flash_elem.text
+        # text_content() retrieves the text content of the element
+        message = self.page.locator("#flash").text_content()
         logger.debug("Flash message: %s", message)
-        return message
+        return message.strip() if message else ""

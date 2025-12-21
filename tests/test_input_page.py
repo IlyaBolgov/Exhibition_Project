@@ -1,8 +1,9 @@
 from pages.inputs_page import InputsPage
+from playwright.sync_api import Page
 
 
-def test_input_field(driver):
-    inputs_page = InputsPage(driver)
+def test_input_field(page: Page):
+    inputs_page = InputsPage(page)
     inputs_page.open()
     test_value = "12345"
     inputs_page.set_input_value(test_value)
